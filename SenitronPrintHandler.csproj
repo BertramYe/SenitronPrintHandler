@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="itextsharp.xmlworker" Version="5.5.13.3" />
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
+    <PackageReference Include="Tesseract" Version="5.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MoonPdfLib">
+      <HintPath>MoonPdfLib\MoonPdfLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MouseKeyboardActivityMonitor">
+      <HintPath>MoonPdfLib\MouseKeyboardActivityMonitor.dll</HintPath>
+    </Reference>
+    <Reference Include="O2S.Components.PDFRender4NET.Win.NETCore">
+      <HintPath>O2S.Components.PDFRender4NET\.NET Core\O2S.Components.PDFRender4NET.Win.NETCore.dll</HintPath>
+    </Reference>
+    <Reference Include="O2S.Components.PDFView4NET.Win.NETCore">
+      <HintPath>O2S.Components.PDFRender4NET\.NET Core\O2S.Components.PDFView4NET.Win.NETCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

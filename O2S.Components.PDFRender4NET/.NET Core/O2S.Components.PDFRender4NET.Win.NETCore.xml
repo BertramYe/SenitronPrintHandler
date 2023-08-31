@@ -1,0 +1,415 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>O2S.Components.PDFRender4NET.Win</name>
+  </assembly>
+  <members>
+    <member name="T:O2S.Components.PDFRender4NET.PDFGraphicEngine">
+      <summary>Specifies the graphic engine used for rendering the PDF content.</summary>
+    </member>
+    <member name="F:O2S.Components.PDFRender4NET.PDFGraphicEngine.GdiPlus">
+      <summary>GDI+ is used for rendering PDF content.</summary>
+    </member>
+    <member name="F:O2S.Components.PDFRender4NET.PDFGraphicEngine.Quadrifoglio">
+      <summary>The Quadrifoglio engine is used for rendering PDF content.</summary>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.PageRenderingErrorEventArgs">
+      <summary>Defines the arguments for page rendering error event.</summary>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.PDFFile">
+      <summary>Represents an existing PDF file.</summary>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.PDFSize">
+      <summary>Stores an ordered pair of floating-point numbers, typically the width and height of a rectangle.</summary>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.PageRenderingErrorEventArgs.#ctor(System.Int32,O2S.Components.PDFRender4NET.Exceptions.PDFPageRenderingError,System.String)">
+      <summary>Initializes a new  object.</summary>
+      <param name="pageNumber">The page number on which the error appeared.</param>
+      <param name="pageRenderingError">The type of the error that appeared.</param>
+      <param name="errorMessage">Optional error message.</param>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.PageRenderingErrorEventArgs.Cancel">
+      <summary>Gets or sets a value indicating whether the page rendering should be cancelled or not.</summary>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.PageRenderingErrorEventArgs.ErrorMessage">
+      <summary>Gets the associated error message.</summary>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.PageRenderingErrorEventArgs.PageNumber">
+      <summary>Gets the page number where the error appeared.</summary>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.PageRenderingErrorEventArgs.PageRenderingError">
+      <summary>Gets the type of the error that appeared.</summary>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.PDFFile.Dispose">
+      <summary>Closes the PDF file and frees all resources.</summary>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.PDFFile.GetPageImage(System.Int32,System.Double)">
+      <summary>Renders a PDF page to a  object.</summary>
+      <returns>A  object representing the PDF page.</returns>
+      <param name="pageNumber">The number of the page to render.</param>
+      <param name="resolution">The resolution the page will be rendered at.</param>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.PDFFile.GetPageImage(System.Int32,System.Double,O2S.Components.PDFRender4NET.Printing.PDFPrintContent)">
+      <summary>Renders a PDF page to a  object.</summary>
+      <returns>A  object representing the PDF page.</returns>
+      <param name="pageNumber">The number of the page to render.</param>
+      <param name="resolution">The resolution the page will be rendered at.</param>
+      <param name="printContent">The page content to be rendered.</param>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.PDFFile.GetPageImagesAsMultipageTiff(System.String,System.Double)">
+      <summary>Renders all the pages of the PDF file to a multi page TIFF image.</summary>
+      <param name="file">The physical path where the TIFF image will be stored.</param>
+      <param name="resolution">The resolution the pages will be rendered at.</param>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.PDFFile.GetPageImagesAsMultipageTiff(System.IO.Stream,System.Double)">
+      <summary>Renders all the pages of the PDF file to a multi page TIFF image.</summary>
+      <param name="stream">The stream where the TIFF image will be stored.</param>
+      <param name="resolution">The resolution the pages will be rendered at.</param>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.PDFFile.GetPageImagesAsMultipageTiff(System.Double)">
+      <summary>Renders all the pages of the PDF file to a multi page TIFF image.</summary>
+      <returns>A memory stream storing the TIFF image.</returns>
+      <param name="resolution">The resolution the pages will be rendered at.</param>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.PDFFile.GetPageSize(System.Int32)">
+      <summary>Gets the size of a page in points.</summary>
+      <returns>The size of the page in points.</returns>
+      <param name="pageNumber">The number of the page.</param>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.PDFFile.Open(System.String)">
+      <summary>Creates a  object from the given pdf file.</summary>
+      <returns>A  object created based on the given pdf file.</returns>
+      <param name="fileName">the full path to a pdf file used as source for this  object.</param>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.PDFFile.Open(System.String,System.Byte[])">
+      <summary>Creates a  object from the given pdf file.</summary>
+      <returns>A  object created based on the given pdf file.</returns>
+      <param name="fileName">the full path to a pdf file used as source for this  object.</param>
+      <param name="userPassword">the user password used to decrypt the PDF file.</param>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.PDFFile.Open(System.IO.Stream)">
+      <summary>Creates a  object from the given stream object.</summary>
+      <returns>A  object created based on the given stream object.</returns>
+      <param name="stream">the stream object used as source for this  object.</param>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.PDFFile.Open(System.IO.Stream,System.Byte[])">
+      <summary>Creates a  object from the given stream object.</summary>
+      <returns>A  object created based on the given stream object.</returns>
+      <param name="stream">the stream object used as source for this  object.</param>
+      <param name="userPassword">the user password used to decrypt the PDF file.</param>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.PDFFile.Print(O2S.Components.PDFRender4NET.Printing.PDFPrintSettings)">
+      <summary>Prints the PDF file with the specified settings.</summary>
+      <param name="settings">Settings for printing the PDF file.</param>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.PDFFile.Print(O2S.Components.PDFRender4NET.Printing.PDFPrintSettings,O2S.Components.PDFRender4NET.Printing.PDFPrintContent)">
+      <summary>Prints the PDF file with the specified settings.</summary>
+      <param name="settings">Settings for printing the PDF file.</param>
+      <param name="printContent">The content to be printed.</param>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.PDFFile.RenderPage(System.Int32,System.Drawing.Graphics)">
+      <summary>Renders the specified page on a graphics surface.</summary>
+      <param name="pageNumber">The number of the page to render.</param>
+      <param name="g">The drawing surface.</param>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.PDFFile.RenderPage(System.Int32,System.Drawing.Graphics,O2S.Components.PDFRender4NET.Printing.PDFPrintContent)">
+      <summary>Renders the specified page on a graphics surface.</summary>
+      <param name="pageNumber">The number of the page to render.</param>
+      <param name="g">The drawing surface.</param>
+      <param name="printContent">The page content to be rendered.</param>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.PDFFile.RenderPage(System.Int32,System.Drawing.Graphics,System.Double,System.Double)">
+      <summary>Renders the specified page on a graphics surface.</summary>
+      <param name="pageNumber">The number of the page to render.</param>
+      <param name="g">The drawing surface.</param>
+      <param name="x">The X coordinate of the top left corner of the page.</param>
+      <param name="y">The Y coordinate of the top left corner of the page.</param>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.PDFFile.RenderPage(System.Int32,System.Drawing.Graphics,System.Double,System.Double,O2S.Components.PDFRender4NET.Printing.PDFPrintContent)">
+      <summary>Renders the specified page on a graphics surface.</summary>
+      <param name="pageNumber">The number of the page to render.</param>
+      <param name="g">The drawing surface.</param>
+      <param name="x">The X coordinate of the top left corner of the page.</param>
+      <param name="y">The Y coordinate of the top left corner of the page.</param>
+      <param name="printContent">The page content to be rendered.</param>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.PDFFile.BWConversionThreshold">
+      <summary>Gets or sets the threshold for B/W conversion.</summary>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.PDFFile.GraphicEngine">
+      <summary>Gets or sets the graphic engine used for rendering PDF content.</summary>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.PDFFile.PageCount">
+      <summary>Gets the number of pages in the PDF file.</summary>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.PDFFile.SnapRectanglesToGrid">
+      <summary>Gets or sets a flag indicating whether the drawn rectangles should be drawn on full pixels.</summary>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.PDFFile.SubstituteFonts">
+      <summary>Specifies a collection of fonts to be used when the corresponding font is not embedded in the PDF file.</summary>
+    </member>
+    <member name="E:O2S.Components.PDFRender4NET.PDFFile.AfterPrintPage">
+      <summary>Fired after a PDF page is printed.</summary>
+    </member>
+    <member name="E:O2S.Components.PDFRender4NET.PDFFile.BeforePrintPage">
+      <summary>Fired before a PDF page is printed.</summary>
+    </member>
+    <member name="E:O2S.Components.PDFRender4NET.PDFFile.PageRenderingError">
+      <summary>Gets or sets the event being fired when a page rendering error has occured.</summary>
+    </member>
+    <member name="E:O2S.Components.PDFRender4NET.PDFFile.PrintProgress">
+      <summary>Fired after a PDF page is printed, to notify about the progress of the print operation.</summary>
+    </member>
+    <member name="E:O2S.Components.PDFRender4NET.PDFFile.QueryPageSettings">
+      <summary>Fired before a PDF page is printed for setting page properties.</summary>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.PDFSize.#ctor">
+      <summary>Initializes a new  object.</summary>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.PDFSize.#ctor(System.Double,System.Double)">
+      <summary>Initializes a new  object.</summary>
+      <param name="width">The width.</param>
+      <param name="height">The height.</param>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.PDFSize.Height">
+      <summary>Gets or sets the height.</summary>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.PDFSize.Width">
+      <summary>Gets or sets the width.</summary>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.Dithering.PDFAtkinsonDitheringFilter">
+      <summary>Defines a binarization filter that uses error diffusion dithering to convert grayscale data to black and white.</summary>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.Dithering.PDFBayerDitheringFilter">
+      <summary>Defines a binarization filter that uses a matrix of threshold values to convert grayscale data to black and white.</summary>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.Dithering.PDFBinarizationFilter">
+      <summary>The base class for binarization filters.</summary>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.Dithering.PDFBurkesDitheringFilter">
+      <summary>Defines a binarization filter that uses error diffusion dithering to convert grayscale data to black and white.</summary>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.Dithering.PDFErrorDiffusionDitheringFilter">
+      <summary>Defines a binarization filter that uses error diffusion dithering to convert grayscale data to black and white.</summary>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.Dithering.PDFFloydSteinbergDitheringFilter">
+      <summary>Defines a binarization filter that uses error diffusion dithering to convert grayscale data to black and white.</summary>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.Dithering.PDFJarvisJudiceNinkeDitheringFilter">
+      <summary>Defines a binarization filter that uses error diffusion dithering to convert grayscale data to black and white.</summary>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.Dithering.PDFOrderedDitheringFilter">
+      <summary>Defines a binarization filter that uses a matrix of threshold values to convert grayscale data to black and white.</summary>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.Dithering.PDFSierraDitheringFilter">
+      <summary>Defines a binarization filter that uses error diffusion dithering to convert grayscale data to black and white.</summary>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.Dithering.PDFSierraLiteDitheringFilter">
+      <summary>Defines a binarization filter that uses error diffusion dithering to convert grayscale data to black and white.</summary>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.Dithering.PDFSierraTwoRowDitheringFilter">
+      <summary>Defines a binarization filter that uses error diffusion dithering to convert grayscale data to black and white.</summary>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.Dithering.PDFStuckiDitheringFilter">
+      <summary>Defines a binarization filter that uses error diffusion dithering to convert grayscale data to black and white.</summary>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.Dithering.PDFThresholdFilter">
+      <summary>Defines a binarization filter that uses a fixed threshold to convert grayscale data to black and white.</summary>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.Dithering.PDFAtkinsonDitheringFilter.#ctor">
+      <summary>Initializes a new  object.</summary>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.Dithering.PDFBayerDitheringFilter.#ctor">
+      <summary>Initializes a new  object.</summary>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.Dithering.PDFBurkesDitheringFilter.#ctor">
+      <summary>Initializes a new  object.</summary>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.Dithering.PDFFloydSteinbergDitheringFilter.#ctor">
+      <summary>Initializes a new  object.</summary>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.Dithering.PDFJarvisJudiceNinkeDitheringFilter.#ctor">
+      <summary>Initializes a new  object.</summary>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.Dithering.PDFOrderedDitheringFilter.#ctor">
+      <summary>Initializes a new  object.</summary>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.Dithering.PDFSierraDitheringFilter.#ctor">
+      <summary>Initializes a new  object.</summary>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.Dithering.PDFSierraLiteDitheringFilter.#ctor">
+      <summary>Initializes a new  object.</summary>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.Dithering.PDFSierraTwoRowDitheringFilter.#ctor">
+      <summary>Initializes a new  object.</summary>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.Dithering.PDFStuckiDitheringFilter.#ctor">
+      <summary>Initializes a new  object.</summary>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.Dithering.PDFThresholdFilter.#ctor(System.Byte)">
+      <summary>Initializes a new  object.</summary>
+      <param name="threshold">The filter threshold.</param>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.Exceptions.PDFPageRenderingError">
+      <summary>Specifies the possible errors that can appear during the rendering of a PDF page.</summary>
+    </member>
+    <member name="F:O2S.Components.PDFRender4NET.Exceptions.PDFPageRenderingError.CmykJpeg">
+      <summary>CMYK JPEG image is rendered as negative.</summary>
+    </member>
+    <member name="F:O2S.Components.PDFRender4NET.Exceptions.PDFPageRenderingError.Jpeg2000">
+      <summary>JPEG2000 image is not rendered.</summary>
+    </member>
+    <member name="F:O2S.Components.PDFRender4NET.Exceptions.PDFPageRenderingError.JBig2">
+      <summary>JBIG2 image is not rendered.</summary>
+    </member>
+    <member name="F:O2S.Components.PDFRender4NET.Exceptions.PDFPageRenderingError.InvalidFontData">
+      <summary>Font cannot be rendered.</summary>
+    </member>
+    <member name="F:O2S.Components.PDFRender4NET.Exceptions.PDFPageRenderingError.TextClipPath">
+      <summary>Text used as clipping path.</summary>
+    </member>
+    <member name="F:O2S.Components.PDFRender4NET.Exceptions.PDFPageRenderingError.ContentStreamError">
+      <summary>Content stream cannot be processed.</summary>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.Exceptions.FontParserException">
+      <summary>Defines the exception thrown when errors are encountered when parsing the font files.</summary>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.Exceptions.InvalidPageException">
+      <summary>Defines the exception thrown when the page object is not valid.</summary>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.Exceptions.InvalidPasswordException">
+      <summary>Defines the exception thrown when the password for opening the PDF file is not valid.</summary>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.Exceptions.PageRenderingException">
+      <summary>Defines the exception thrown when errors are encountered in the page content.</summary>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.Exceptions.FontParserException.#ctor(System.String)">
+      <summary>Initializes a new  object.</summary>
+      <param name="message">The message with details about the error in the font data.</param>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.Exceptions.FontParserException.#ctor(System.String,System.Exception)">
+      <summary>Initializes a new  object.</summary>
+      <param name="message">The message with details about the error in the font data.</param>
+      <param name="innerException">Inner exception.</param>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.Exceptions.InvalidPageException.#ctor(System.String)">
+      <summary>Initializes a new  object.</summary>
+      <param name="message">The message with details about the error in page content.</param>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.Exceptions.InvalidPasswordException.#ctor(System.String)">
+      <summary>Initializes a new  object.</summary>
+      <param name="message">The message with details about the error in page content.</param>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.Exceptions.PageRenderingException.#ctor(System.String)">
+      <summary>Initializes a new  object.</summary>
+      <param name="message">The message with details about the error in page content.</param>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.Printing.PageScaling">
+      <summary>Specifies the available scaling options when printing a PDF file.</summary>
+    </member>
+    <member name="F:O2S.Components.PDFRender4NET.Printing.PageScaling.None">
+      <summary>No page scaling is performed. The page content is displayed starting from the top left corner of the page. Content that falls outside the printable are is not
+printed.</summary>
+    </member>
+    <member name="F:O2S.Components.PDFRender4NET.Printing.PageScaling.FitToPrinterMargins">
+      <summary>Page content is scaled, enlarged or reduced, to fit the printable area. The original aspect ratio is not preserved.</summary>
+    </member>
+    <member name="F:O2S.Components.PDFRender4NET.Printing.PageScaling.FitToPrinterMarginsProportional">
+      <summary>Page content is scaled, enlarged or reduced, to fit the printable area. The original aspect ratio is preserved.</summary>
+    </member>
+    <member name="F:O2S.Components.PDFRender4NET.Printing.PageScaling.ReduceToPrinterMargins">
+      <summary>Page content is scaled (reduced) to fit the printable area if it is larger than the printable area. If it is smaller, no scaling is performed. The original
+aspect ratio is not preserved if one of the dimensions, width and/or height, needs to be scaled.</summary>
+    </member>
+    <member name="F:O2S.Components.PDFRender4NET.Printing.PageScaling.ReduceToPrinterMarginsProportional">
+      <summary>Page content is scaled (reduced) to fit the printable area if it is larger than the printable area. If it is smaller, no scaling is performed. The original
+aspect ratio is preserved if one of the dimensions, width and/or height, needs to be scaled.</summary>
+    </member>
+    <member name="F:O2S.Components.PDFRender4NET.Printing.PageScaling.MultiplePagesPerSheet">
+      <summary>Multiple pages are printed on a single sheet of paper.</summary>
+    </member>
+    <member name="F:O2S.Components.PDFRender4NET.Printing.PageScaling.MultiplePagesPerSheetProportional">
+      <summary>Multiple pages are printed on a single sheet of paper. The original aspect ratio is preserved for each page.</summary>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.Printing.PDFPrintContent">
+      <summary>Specifies what parts of the page (content, annotations and/or form fields) should be printed.</summary>
+    </member>
+    <member name="F:O2S.Components.PDFRender4NET.Printing.PDFPrintContent.Page">
+      <summary>Page content should be printed.</summary>
+    </member>
+    <member name="F:O2S.Components.PDFRender4NET.Printing.PDFPrintContent.Annotations">
+      <summary>Annotations should be printed.</summary>
+    </member>
+    <member name="F:O2S.Components.PDFRender4NET.Printing.PDFPrintContent.FormFields">
+      <summary>Form fields should be printed.</summary>
+    </member>
+    <member name="T:O2S.Components.PDFRender4NET.Printing.PrintProgressEventArgs">
+      <summary>Defines the arguments for print progress event.</summary>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.Printing.PDFPrintSettings.#ctor">
+      <summary>Initializes a new  object.</summary>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.Printing.PDFPrintSettings.#ctor(System.Drawing.Printing.PrinterSettings)">
+      <param name="printerSettings">Printer settings object for printing the PDF file.</param>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.Printing.PDFPrintSettings.AutoRotate">
+      <summary>Gets or sets a value indicating whether the page should be rotated to match the paper orientation.</summary>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.Printing.PDFPrintSettings.BitmapPrintResolution">
+      <summary>Gets or sets the bitmap resolution for printing.</summary>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.Printing.PDFPrintSettings.BitmapTransparentColor">
+      <summary>Gets or sets the bitmap transparent color.</summary>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.Printing.PDFPrintSettings.Columns">
+      <summary>Gets or sets the columns count.</summary>
+      <exception caption="" cref="T:System.ArgumentOutOfRangeException">Thrown when values is less than 1.</exception>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.Printing.PDFPrintSettings.DocumentName">
+      <summary>Gets or sets the document name to display (for example, in a print status dialog box or printer queue) while printing the document.</summary>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.Printing.PDFPrintSettings.DownscaleLargeImages">
+      <summary>Gets or sets a value indicating whether large images should be down scaled.</summary>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.Printing.PDFPrintSettings.PageScaling">
+      <summary>Gets or sets the page scaling.</summary>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.Printing.PDFPrintSettings.PaperSize">
+      <summary>Gets or sets the paper size for the page.</summary>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.Printing.PDFPrintSettings.PaperSource">
+      <summary>Gets or sets the page's paper source.</summary>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.Printing.PDFPrintSettings.PenAdjust">
+      <summary>Gets or sets the value of pen adjustment factor.</summary>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.Printing.PDFPrintSettings.PrinterSettings">
+      <summary>Gets the printer settings for printing the PDF file</summary>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.Printing.PDFPrintSettings.PrintRanges">
+      <summary>Gets or sets the ranges of pages to print.</summary>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.Printing.PDFPrintSettings.Rows">
+      <summary>Gets or sets the rows count.</summary>
+      <exception caption="" cref="T:System.ArgumentOutOfRangeException">Thrown when values is less than 1.</exception>
+    </member>
+    <member name="M:O2S.Components.PDFRender4NET.Printing.PrintProgressEventArgs.#ctor(System.Int32,System.Int32,System.Int32)">
+      <summary>Initializes a new  object.</summary>
+      <param name="pageNumber">The number of the page within the document being printed.</param>
+      <param name="currentPage">The number of the page within the printed range being printed.</param>
+      <param name="printPageCount">Total number of pages being printed.</param>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.Printing.PrintProgressEventArgs.Cancel">
+      <summary>Gets or sets a value indicating whether the page printing should be cancelled or not.</summary>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.Printing.PrintProgressEventArgs.CurrentPage">
+      <summary>Gets the page number within the print range being printed.</summary>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.Printing.PrintProgressEventArgs.PageNumber">
+      <summary>Gets the page number within the document being printed.</summary>
+    </member>
+    <member name="P:O2S.Components.PDFRender4NET.Printing.PrintProgressEventArgs.PrintPageCount">
+      <summary>Gets the total number of pages being printed.</summary>
+    </member>
+  </members>
+</doc>
