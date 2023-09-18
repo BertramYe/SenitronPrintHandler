@@ -30,11 +30,11 @@
         </Grid>
 
         <Button x:Name="openPDF"  Content="OpenPDF" HorizontalAlignment="Left" Margin="63,31,0,0" VerticalAlignment="Top" Height="36" Width="98" Click="Button_Click"/>
-        <Button x:Name="RunningButton" Content="Test Extract" HorizontalAlignment="Left" Margin="618,32,0,0" VerticalAlignment="Top" Height="34" Width="100"  Click="HandlePdf" />
+        <Button x:Name="RunningButton" Content="Test Extract" HorizontalAlignment="Left" Margin="618,11,0,0" VerticalAlignment="Top" Height="34" Width="100"  Click="HandlePdf" RenderTransformOrigin="0.5,-0.234" />
         <Button x:Name="ZoomOutButton" IsEnabled="False" Content="ZoomOut" HorizontalAlignment="Left" Margin="222,32,0,0" VerticalAlignment="Top" Height="35" Width="90" Click="ZoomOutButton_Click"/>
         <Button x:Name="ZoomInButton" IsEnabled="False" Content="ZoomIn" HorizontalAlignment="Left" Margin="453,33,0,0" VerticalAlignment="Top" Height="35" Width="90" Click="ZoomInButton_Click"/>
         <Label x:Name="ShowZoomPercent" Width="100" Height="36" Background="LightGray" Margin="334,32,0,0"  VerticalContentAlignment="Center"  HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Content="100%" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-       
+        <Button x:Name="BackgroundRunningButton" Content="StartRunning" HorizontalAlignment="Left" Margin="618,51,0,0" VerticalAlignment="Top" Height="33" Width="100"  Click="HandleThreading" />
 
 
 

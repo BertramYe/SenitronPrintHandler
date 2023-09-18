@@ -21,35 +21,38 @@ namespace SenitronPrintHandler
             string to_replace_line = "";
             foreach (string line in lines)
             {
-                string[] parts = line.Split(',');
-                if (parts.Length >= 5)  // get the coo info
+                if (line.Contains("="))
                 {
-                    string key = parts[0];
-                    int[] coordinates = Array.ConvertAll(parts[1..], int.Parse);
-                    values[key] = coordinates;
-                }
-                else
-                {
-                    string key = parts[0].Trim();
-                    string value = "";
-                    if (key == "ApplicationRunningTimes")
+                    string[] origin_parts = line.Split('=');
+                    string[] parts = origin_parts[1].Split(',');
+                    if (parts.Length >= 4)  // get the coo info
                     {
-                        //// every time of the applications running, the running times will autoplus 1 in th econfig files
-
-                        int applicationRunningCounter = Convert.ToInt32(parts[1].Trim()) + 1;
-                        string applicationRunningTimes = applicationRunningCounter.ToString();
-                        to_replace_line = applicationRunningTimes;
-                        value = applicationRunningTimes;
-
+                        string key = origin_parts[0];
+                        int[] coordinates = Array.ConvertAll(parts[0..], int.Parse);
+                        values[key] = coordinates;
                     }
                     else
                     {
-                        value = parts[1].Trim();
+                        string key = origin_parts[0].Trim();
+                        string value = "";
+                        if (key == "ApplicationRunningTimes")
+                        {
+                            //// every time of the applications running, the running times will autoplus 1 in th econfig files
+
+                            int applicationRunningCounter = Convert.ToInt32(origin_parts[1].Trim()) + 1;
+                            string applicationRunningTimes = applicationRunningCounter.ToString();
+                            to_replace_line = applicationRunningTimes;
+                            value = applicationRunningTimes;
+
+                        }
+                        else
+                        {
+                            value = origin_parts[1].Trim();
+                        }
+                        configValves[key] = value;
                     }
-                    configValves[key] = value;
+
                 }
-
-
             }
 
             // replace the old ApplicationRunningTimes
@@ -93,9 +96,9 @@ namespace SenitronPrintHandler
                 {
                     if (lines[i].Contains(strIndex))
                     {
-                        string[] str = lines[i].Split(",");
+                        string[] str = lines[i].Split("=");
                         str[1] = newValue;
-                        lines[i] = str[0] + "," + str[1];
+                        lines[i] = str[0] + "=" + str[1];
                     }
                 }
                 File.WriteAllLines(strFilePath, lines);

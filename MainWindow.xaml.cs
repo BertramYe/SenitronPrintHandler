@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -50,10 +51,10 @@ namespace SenitronPrintHandler
         // pageSize 
         double[] pdfPageSize;
 
-        List<string> toSetValueNames = new List<string> { "assetid","sku","epc-alt-serial","epc-attrib1",
-                                                                            "epc-attrib2","epc-attrib3","epc-attrib4","epc-attrib5",
-                                                                            "epc-attrib6","epc-attrib7","epc-attrib8","epc-attrib9",
-                                                                            "epc-attrib10","epc-container-qty"};
+        List<string> toSetValueNames = new List<string> { "AssetId","Sku","EpcAltSerial","EpcAttrib1",
+                                                                            "EpcAttrib2","EpcAttrib3","EpcAttrib4","EpcAttrib5",
+                                                                            "EpcAttrib6","EpcAttrib7","EpcAttrib8","EpcAttrib9",
+                                                                            "EpcAttrib10","EpcContainerQty"};
 
 
         //ini.InitReadFile("setup.ini");
@@ -61,6 +62,8 @@ namespace SenitronPrintHandler
         //PdfFolderWatcher pdfwatcher = new PdfFolderWatcher(toReadpdfPath);
         IniFile ini = new IniFile();
 
+        private Task _pdf_task;
+        private static CancellationTokenSource _cancellationTokenSource;
         public MainWindow()
         {
             InitializeComponent();
@@ -366,17 +369,7 @@ namespace SenitronPrintHandler
             double ActualY1;
             double ActualW;
             double ActualH;
-            //if (type == 0)  // make label coor more accurate
-            //{
-            //    ActualX1 = ((ScanCoord[0] / currentZoom) * avavTimes) / 8;
-            //    ActualY1 = ((ScanCoord[1] / currentZoom) * avavTimes) / 8;
-            //}
-            //else
-            //{
-            //    ActualX1 = (ScanCoord[0] / currentZoom) * avavTimes;
-            //    ActualY1 = (ScanCoord[1] / currentZoom) * avavTimes;
-            //}
-
+            
             ActualX1 = (ScanCoord[0] / currentZoom) * avavTimes;
             ActualY1 = (ScanCoord[1] / currentZoom) * avavTimes;
 
@@ -465,6 +458,63 @@ namespace SenitronPrintHandler
 
         }
 
+        private void HandleThreading(object sender, RoutedEventArgs e)
+        {
+            string butttonContent = this.BackgroundRunningButton.Content.ToString();
+            if (butttonContent == "StopRunning")
+            {
+                _cancellationTokenSource.Cancel();
+                _cancellationTokenSource.Dispose();
+                if (_pdf_task.IsCompletedSuccessfully)
+                {
+                    _pdf_task.Dispose();
+                }
+
+
+
+                this.BackgroundRunningButton.Content = "StartRunning";
+            }
+            if (butttonContent == "StartRunning")
+            {
+                _cancellationTokenSource = new CancellationTokenSource();
+                var dueTime1 = TimeSpan.FromSeconds(1);
+                var interval1 = TimeSpan.FromSeconds(1);
+                //_cancellationTokenSource.Cancel();
+                _pdf_task = RunPeriodicAsync(DoWork, dueTime1, dueTime1, _cancellationTokenSource.Token);
+                this.BackgroundRunningButton.Content = "StopRunning";
+            }
+        }
+
+
+        private static async Task RunPeriodicAsync(Action onTick,
+                                                 TimeSpan dueTime,
+                                                 TimeSpan interval,
+                                                 CancellationToken token)
+        {
+            // Initial wait time before we begin the periodic loop.
+            if (dueTime > TimeSpan.Zero)
+                await Task.Delay(dueTime, token);
+
+            // Repeat this loop until cancelled.
+            while (!token.IsCancellationRequested)
+            {
+                // Call our onTick function.
+                onTick?.Invoke();
+
+                // Wait to repeat again.
+                if (interval > TimeSpan.Zero)
+                    await Task.Delay(interval, token);
+            }
+        }
+
+        private void DoWork()
+        {
+
+
+            appLog.WriteLog($"test threading !!!!");
+
+
+        }
 
 
 

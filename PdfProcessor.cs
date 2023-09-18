@@ -30,10 +30,9 @@ namespace SenitronPrintHandler
 
 
             // Get label-extract and ItemCode-extract coordinates from the INI file
-            List<string> targetCoord = new List<string> {"assetid","sku","epc-alt-serial","epc-attrib1",
-                                                         "epc-attrib2","epc-attrib3","epc-attrib4","epc-attrib5",
-                                                         "epc-attrib6","epc-attrib7","epc-attrib8","epc-attrib9",
-                                                        "epc-attrib10","epc-container-qty"};
+            List<string> targetCoord = new List<string> {"AssetId","Sku","EpcAltSerial","EpcAttrib1","EpcAttrib2",
+                                      "EpcAttrib3","EpcAttrib4","EpcAttrib5","EpcAttrib6","EpcAttrib7",
+                                       "EpcAttrib8","EpcAttrib9","EpcAttrib10","EpcContainerQty"};
 
             // ALL COOR DICT
             Dictionary<string, System.Drawing.Rectangle> rectDic = ReadCoo(targetCoord, ini);
@@ -68,11 +67,11 @@ namespace SenitronPrintHandler
 
             // get the final image path
             //string finalImagePath = "./Images/";
-            string finalImagePath = ini.GetConfigInfo("FinalImagePath");
-            if (!Directory.Exists(finalImagePath))
-            {
-                Directory.CreateDirectory(finalImagePath);
-            }
+            //string finalImagePath = ini.GetConfigInfo("FinalImagePath");
+            //if (!Directory.Exists(finalImagePath))
+            //{
+            //    Directory.CreateDirectory(finalImagePath);
+            //}
 
             using (PdfReader reader = new PdfReader(pdfFilePath))
             {
